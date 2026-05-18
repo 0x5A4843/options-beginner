@@ -9,7 +9,7 @@ const screens = [
   {
     kicker: "为什么还要学期权？",
     title: "期货之外，期权多了什么？",
-    action: "看一个例子",
+    action: "先认识期权",
     messages: [
       {
         button: "下一段",
@@ -58,12 +58,198 @@ const screens = [
         ],
       },
       {
-        button: "看一个例子",
+        button: "先认识期权",
         role: "期权新手",
         mood: "curious",
         lines: [
           "我感觉还是有点抽象，",
           "能结合实际的场景给一点更具体的例子么？",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "第二部分 1",
+    title: "先认识期权是什么",
+    action: "看买方卖方",
+    visual: {
+      type: "scenario",
+      label: "期权本质",
+      chips: ["选择权", "权利金", "到期日"],
+      payoff: "选择权，不是义务",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "那先从最基础的说。",
+          "期权到底是什么？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "大白话讲，",
+          "期权就是一份选择权，",
+          "不是一份必须执行的义务。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "你先花一笔权利金，",
+          "换来未来某个价格，",
+          "买或者卖标的的权利。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "也就是说，",
+          "我买了以后，",
+          "不是一定要用这个权利？",
+        ],
+      },
+      {
+        button: "看买方卖方",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "对。",
+          "行情对你有利就用，",
+          "不利就最多亏权利金。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "第二部分 2",
+    title: "买方和卖方",
+    action: "看认购认沽",
+    visual: {
+      type: "scenario",
+      label: "交易两边",
+      chips: ["买方", "权利金", "卖方"],
+      payoff: "一边买选择，一边收钱担责",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "期权交易里，",
+          "先分清两边：",
+          "买方和卖方。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "买方花钱买选择权。",
+          "亏损通常封顶，",
+          "最多亏掉权利金。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "那卖方呢？",
+          "是不是就收这笔权利金？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "卖方收钱承担义务。",
+          "如果行情走到不利位置，",
+          "就要按约定履约。",
+        ],
+      },
+      {
+        button: "看认购认沽",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "所以新手先记住：",
+          "买方像买保险，",
+          "卖方像开保险公司。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "第二部分 3",
+    title: "认购和认沽",
+    action: "看一个例子",
+    visual: {
+      type: "scenario",
+      label: "两个方向工具",
+      chips: ["认购 Call", "上涨", "认沽 Put"],
+      payoff: "看涨看跌都能表达",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "那认购和认沽，",
+          "是不是就是看涨和看跌？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "可以先这么理解。",
+          "认购是看涨工具，",
+          "标的涨了它更容易受益。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "认沽是看跌工具。",
+          "标的跌了它更容易受益，",
+          "也常用来做保护。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "所以认购像押上涨，",
+          "认沽像押下跌，",
+          "但亏损可以先封住？",
+        ],
+      },
+      {
+        button: "看一个例子",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "对，这是买方视角。",
+          "先有这个概念，",
+          "后面的例子就好理解了。",
         ],
       },
     ],

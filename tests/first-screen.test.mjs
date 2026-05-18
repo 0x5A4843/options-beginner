@@ -38,6 +38,9 @@ test("tutorial screens are rendered from vanilla JS inside a mobile shell", asyn
   assert.match(js, /波动会不会变大/);
   assert.match(js, /交易工具箱/);
   assert.match(js, /期货之外，期权多了什么？/);
+  assert.match(js, /先认识期权是什么/);
+  assert.match(js, /买方和卖方/);
+  assert.match(js, /认购和认沽/);
   assert.match(js, /不判断方向，押注大波动/);
   assert.match(js, /事件驱动，亏损封顶/);
   assert.match(js, /浮盈锁定，保留上行/);
@@ -65,6 +68,12 @@ test("tutorial screens are rendered from vanilla JS inside a mobile shell", asyn
   assert.match(js, /lines:/);
   assert.match(js, /下一段/);
   assert.match(js, /看一个例子/);
+  assert.match(js, /选择权，不是义务/);
+  assert.match(js, /权利金/);
+  assert.match(js, /买方花钱买选择权/);
+  assert.match(js, /卖方收钱承担义务/);
+  assert.match(js, /认购是看涨工具/);
+  assert.match(js, /认沽是看跌工具/);
   assert.doesNotMatch(js, /宽跨式：赚大波动/);
   assert.doesNotMatch(js, /那你说个更具体的例子/);
   assert.doesNotMatch(js, /这就是宽跨式/);
