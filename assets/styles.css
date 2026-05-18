@@ -10,6 +10,7 @@
 }
 
 body {
+  height: 100%;
   min-height: 100svh;
   margin: 0;
   display: grid;
@@ -22,7 +23,8 @@ body {
 .phone-shell {
   width: min(100%, 430px);
   max-width: 430px;
-  min-height: 100svh;
+  height: 100svh;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   padding: 22px 18px 20px;
@@ -58,7 +60,8 @@ h1 {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  min-height: 0;
+  gap: 12px;
 }
 
 .screen-copy {
@@ -72,16 +75,164 @@ h1 {
   letter-spacing: 0;
 }
 
-.dialogue-list {
-  display: grid;
-  gap: 12px;
+.dialogue-panel {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: auto;
+  padding: 2px 4px 8px 0;
 }
 
-.dialogue-card {
+.dialogue-list {
   display: grid;
-  grid-template-columns: 54px 1fr;
+  gap: 10px;
+}
+
+.chart-card {
+  padding: 13px 14px 12px;
+  border: 2px solid #172033;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 4px 4px 0 #172033;
+  flex: 0 0 auto;
+}
+
+.chart-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #1f6f8b;
+}
+
+.wide-strangle-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 6px;
+}
+
+.profit-zone,
+.loss-zone {
+  opacity: 0.2;
+  transition: opacity 180ms ease, stroke-width 180ms ease;
+}
+
+.profit-zone {
+  fill: #7bc6a4;
+  stroke: #2f8f68;
+  stroke-width: 2;
+}
+
+.loss-zone {
+  fill: #f5b7a8;
+  stroke: #d94f45;
+  stroke-width: 2;
+}
+
+.profit-zone.is-active,
+.loss-zone.is-active {
+  opacity: 0.58;
+  stroke-width: 4;
+}
+
+.chart-threshold {
+  stroke: #172033;
+  stroke-dasharray: 6 6;
+  stroke-width: 2;
+}
+
+.chart-current {
+  stroke: #8b5cf6;
+  stroke-width: 3;
+}
+
+.chart-price-path,
+.chart-profit-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-price-path {
+  stroke: #172033;
+  stroke-width: 5;
+}
+
+.chart-profit-path {
+  stroke-width: 5;
+  stroke-dasharray: 10 8;
+}
+
+.chart-profit-path.up {
+  stroke: #d94f45;
+}
+
+.chart-profit-path.down {
+  stroke: #1f6f8b;
+}
+
+.chart-label {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.chart-label.up {
+  fill: #d94f45;
+}
+
+.chart-label.down {
+  fill: #1f6f8b;
+}
+
+.chart-label.middle {
+  fill: #a84338;
+}
+
+.chart-label.current {
+  fill: #5b3bb2;
+  font-size: 13px;
+}
+
+.chart-card p {
+  margin-top: 4px;
+  color: #556171;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+  color: #556171;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.dialogue-card.student {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
   gap: 12px;
   align-items: start;
+}
+
+.dialogue-card.teacher {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 54px;
+  gap: 12px;
+  align-items: start;
+}
+
+.dialogue-card.teacher .pixel-avatar {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.dialogue-card.teacher .bubble {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .pixel-avatar {
@@ -89,13 +240,25 @@ h1 {
   width: 54px;
   height: 54px;
   border: 4px solid #172033;
-  background:
-    linear-gradient(#ffd166 0 0) 11px 8px / 8px 8px no-repeat,
-    linear-gradient(#ffd166 0 0) 27px 8px / 8px 8px no-repeat,
-    linear-gradient(#7bc6a4 0 0) 8px 30px / 30px 8px no-repeat,
-    #f5b7a8;
   border-radius: 8px;
   box-shadow: 4px 4px 0 #172033;
+}
+
+.avatar-student {
+  background:
+    linear-gradient(#2a6fbb 0 0) 8px 7px / 34px 10px no-repeat,
+    linear-gradient(#ffd166 0 0) 11px 8px / 8px 8px no-repeat,
+    linear-gradient(#ffd166 0 0) 27px 8px / 8px 8px no-repeat,
+    linear-gradient(#7bc6a4 0 0) 8px 34px / 30px 7px no-repeat,
+    #f5b7a8;
+}
+
+.avatar-teacher {
+  background:
+    linear-gradient(#f9fbff 0 0) 8px 6px / 34px 9px no-repeat,
+    linear-gradient(#d94f45 0 0) 10px 32px / 30px 8px no-repeat,
+    linear-gradient(#8b5cf6 0 0) 4px 14px / 42px 8px no-repeat,
+    #c9e7ff;
 }
 
 .pixel-eye {
@@ -114,6 +277,15 @@ h1 {
   right: 14px;
 }
 
+.pixel-mouth {
+  position: absolute;
+  left: 21px;
+  bottom: 12px;
+  width: 12px;
+  height: 4px;
+  background: #172033;
+}
+
 .bubble,
 .lesson-note {
   border: 2px solid #172033;
@@ -124,6 +296,23 @@ h1 {
 
 .bubble {
   padding: 13px 14px;
+}
+
+.dialogue-card.student .bubble {
+  background: #ffffff;
+}
+
+.dialogue-card.teacher .bubble {
+  background: #eef9f1;
+}
+
+.speaker-student {
+  color: #1f6f8b;
+}
+
+.speaker-teacher {
+  color: #4f6f52;
+  text-align: right;
 }
 
 .bubble p:not(.speaker) {
@@ -149,7 +338,8 @@ h1 {
 
 .primary-action {
   width: 100%;
-  margin-top: auto;
+  flex: 0 0 auto;
+  margin-top: 0;
   border: 0;
   border-radius: 8px;
   padding: 15px 18px;
@@ -172,7 +362,8 @@ h1 {
   }
 
   .phone-shell {
-    min-height: min(860px, calc(100svh - 48px));
+    height: min(860px, calc(100svh - 48px));
+    min-height: 0;
     border: 10px solid #172033;
     border-radius: 28px;
     box-shadow: 0 22px 60px rgba(23, 32, 51, 0.22);
