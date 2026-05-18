@@ -168,6 +168,321 @@ const screens = [
       },
     ],
   },
+  {
+    kicker: "核心场景 2",
+    title: "事件驱动，亏损封顶",
+    action: "看下一个场景",
+    visual: {
+      type: "scenario",
+      label: "事件行情",
+      chips: ["政策", "数据", "跳涨跳跌"],
+      payoff: "小权利金 / 大弹性",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "有些行情不是天天有。",
+          "比如政策、库存数据，",
+          "或者碳酸锂这种品种突然暴动。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "这种我也想参与。",
+          "但期货要是方向错了，",
+          "亏起来太快。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这时可以买期权。",
+          "最多亏权利金，",
+          "不会因为保证金不够被打爆。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "如果行情真走出来，",
+          "小权利金也可能撬动大弹性。",
+          "这就是买方最吸引人的地方。",
+        ],
+      },
+      {
+        button: "看下一个场景",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这类做法，",
+          "通常就是买入虚值期权。",
+          "后面再细讲怎么选。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "核心场景 3",
+    title: "浮盈锁定，保留上行",
+    action: "看下一个场景",
+    visual: {
+      type: "scenario",
+      label: "利润护航",
+      chips: ["已有浮盈", "怕回撤", "留住上涨"],
+      payoff: "下方有保护 / 上方还在",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "还有一种很常见的情况。",
+          "利润已经挺厚，",
+          "但你不想马上下车。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "对，卖了怕后面继续涨。",
+          "不卖又怕突然回撤，",
+          "尤其夜盘跳空很难受。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "期权可以换个处理方式。",
+          "你继续拿着原来的仓位，",
+          "再买一个下跌保护。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "它像给利润买保险。",
+          "真跌下来，下面有人兜底；",
+          "继续涨，你也还在车上。",
+        ],
+      },
+      {
+        button: "看下一个场景",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这类组合，",
+          "叫保护性看跌。",
+          "核心是锁风险，不锁收益。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "核心场景 4",
+    title: "横盘收租，资产增效",
+    action: "看下一个场景",
+    visual: {
+      type: "scenario",
+      label: "震荡行情",
+      chips: ["横盘", "时间流逝", "收权利金"],
+      payoff: "把等待变收入",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "有时候市场不大涨，",
+          "也不大跌，",
+          "资产躺着不动。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "这种最烦。",
+          "看着没方向，",
+          "资金又被占着。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "如果你判断短期难大涨，",
+          "可以考虑卖出一些期权，",
+          "把时间价值收回来。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "如果本来就想低位接货，",
+          "也可以挂一个愿意接的位置，",
+          "没接到也先收权利金。",
+        ],
+      },
+      {
+        button: "看下一个场景",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "常见做法是备兑 Call，",
+          "或者现金担保 Put。",
+          "但卖方风险后面要单独讲。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "核心场景 5",
+    title: "波动率坍塌，不靠方向",
+    action: "看下一个场景",
+    visual: {
+      type: "scenario",
+      label: "事件落地",
+      chips: ["事件前贵", "不确定消失", "权利金缩水"],
+      payoff: "赚波动率回落",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "重大事件前，",
+          "市场都紧张，",
+          "事件前期权很贵。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "贵是因为大家都想买保险？",
+          "但事件落地以后，",
+          "好像反而没那么刺激了。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "对。",
+          "不确定性消失以后，",
+          "期权价格可能快速缩水。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这就是波动率坍塌。",
+          "你不是只靠猜涨跌，",
+          "而是在赚恐慌降温。",
+        ],
+      },
+      {
+        button: "看下一个场景",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这类思路常见于双卖或者铁鹰。",
+          "听起来很香，",
+          "但风险边界必须先讲清楚。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "核心场景 6",
+    title: "现货平替，提高效率",
+    action: "完成",
+    visual: {
+      type: "scenario",
+      label: "资金效率",
+      chips: ["少占资金", "接近现货", "保留弹性"],
+      payoff: "用小资金控制大敞口",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "还有一种更进阶的玩法。",
+          "你长期看好一个资产，",
+          "但买现货太占钱。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "期货虽然省钱，",
+          "但有保证金压力，",
+          "还要考虑展期和基差。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "有些深实值期权，",
+          "涨跌会比较接近现货，",
+          "但占用资金少很多。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "你可以把它理解成，",
+          "用更少的钱，",
+          "获得接近现货的方向敞口。",
+        ],
+      },
+      {
+        button: "完成",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这类做法叫深实值 Call。",
+          "它不是入门第一步，",
+          "但值得放进工具箱。",
+        ],
+      },
+    ],
+  },
 ];
 
 let currentScreenIndex = 0;
@@ -242,6 +557,18 @@ function renderWideStrangleChart(visual, activeHighlight = "none", chartStage = 
   `;
 }
 
+function renderScenarioVisual(visual) {
+  return `
+    <section class="chart-card scenario-visual" aria-label="${visual.label}">
+      <div class="chart-title">${visual.label}</div>
+      <div class="scenario-flow">
+        ${visual.chips.map((chip) => `<span class="scenario-chip">${chip}</span>`).join("")}
+      </div>
+      <div class="scenario-payoff">${visual.payoff}</div>
+    </section>
+  `;
+}
+
 function renderVisual(visual, activeHighlight, chartStage) {
   if (!visual) {
     return "";
@@ -249,6 +576,10 @@ function renderVisual(visual, activeHighlight, chartStage) {
 
   if (visual.type === "wide-strangle") {
     return renderWideStrangleChart(visual, activeHighlight, chartStage);
+  }
+
+  if (visual.type === "scenario") {
+    return renderScenarioVisual(visual);
   }
 
   return "";
@@ -338,6 +669,10 @@ function advanceTutorial() {
   if (currentMessageIndex < screen.messages.length - 1) {
     currentMessageIndex += 1;
     renderScreen(screen);
+    return;
+  }
+
+  if (currentScreenIndex === screens.length - 1) {
     return;
   }
 
