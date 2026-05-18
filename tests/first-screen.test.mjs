@@ -29,7 +29,7 @@ test("tutorial screens are rendered from vanilla JS inside a mobile shell", asyn
   assert.match(js, /所以期权不是另一个期货/);
   assert.match(js, /它更像是给你的交易工具箱里/);
   assert.match(js, /我感觉还是有点抽象/);
-  assert.match(js, /能举一些更直观的例子么/);
+  assert.match(js, /能结合实际的场景给一点更具体的例子么/);
   assert.match(js, /为什么还要学股指期权/);
   assert.match(js, /我看涨就做多/);
   assert.match(js, /看跌就做空/);
