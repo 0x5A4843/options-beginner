@@ -423,7 +423,7 @@ const screens = [
   {
     kicker: "核心场景 6",
     title: "现货平替，提高效率",
-    action: "完成",
+    action: "进入下单检查",
     visual: {
       type: "scenario",
       label: "资金效率",
@@ -472,13 +472,327 @@ const screens = [
         ],
       },
       {
-        button: "完成",
+        button: "进入下单检查",
         role: "期权老师",
         mood: "steady",
         lines: [
           "这类做法叫深实值 Call。",
           "它不是入门第一步，",
           "但值得放进工具箱。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "下单检查 1",
+    title: "先说清楚交易想法",
+    action: "看 IV Rank",
+    visual: {
+      type: "scenario",
+      label: "交易想法",
+      chips: ["标的", "观点", "策略"],
+      payoff: "先想清楚，再挑合约",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "现在是不是该看 IV、Delta 这些参数了？",
+          "我感觉参数好多，",
+          "有点不知道从哪下手。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "先别急着看参数。",
+          "第一步是先确定标的，",
+          "你到底想交易哪个品种？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "然后再确定观点。",
+          "你是判断它涨、跌、横盘，",
+          "还是会大幅波动？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "也就是说，",
+          "不是先挑期权，",
+          "是先把行情想法说清楚。",
+        ],
+      },
+      {
+        button: "看 IV Rank",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "对。",
+          "先确定标的，",
+          "再确定你判断它怎么走。",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "下单检查 2",
+    title: "IV Rank：买贵了吗",
+    action: "看 Spread",
+    visual: {
+      type: "scenario",
+      label: "波动率温度",
+      chips: ["IV Rank", "低于 30%", "买方舒服"],
+      payoff: "先看期权贵不贵",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "交易想法清楚以后，",
+          "买方先看一个问题：",
+          "现在买期权贵不贵？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "期权也有贵和便宜？",
+          "不是只看方向对不对吗？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "有。",
+          "你买的是未来波动。",
+          "大家越紧张，期权通常越贵。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "IV Rank 可以当温度计。",
+          "先粗略看：",
+          "IV Rank 低于 30%，买方会舒服一点。",
+        ],
+      },
+      {
+        button: "看 Spread",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这一问就是：",
+          "我是不是一上来，",
+          "就买得太贵了？",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "下单检查 3",
+    title: "Spread：好不好进出",
+    action: "看 Delta",
+    visual: {
+      type: "scenario",
+      label: "流动性检查",
+      chips: ["买一价", "卖一价", "价差"],
+      payoff: "先别被价差割一刀",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "第二个看 Spread。",
+          "也就是买一价和卖一价，",
+          "中间差了多少。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "这个不是小事吗？",
+          "方向判断对了，",
+          "应该就能赚吧？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "价差太大，",
+          "你还没判断对错，",
+          "进出场先被割一刀。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "Spread 窄，",
+          "说明这个合约更好成交，",
+          "也更方便止盈止损。",
+        ],
+      },
+      {
+        button: "看 Delta",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这一问就是：",
+          "这个合约，",
+          "我能不能顺利进出？",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "下单检查 4",
+    title: "Delta：弹性合适吗",
+    action: "看 Theta",
+    visual: {
+      type: "scenario",
+      label: "方向弹性",
+      chips: ["Delta", "0.4 到 0.5", "风险中性"],
+      payoff: "看它跟不跟得上标的",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "第三个看 Delta。",
+          "先别背公式，",
+          "把它理解成跟车速度。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "标的动了，",
+          "这个期权能不能跟着动，",
+          "大概就是看 Delta？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "对。",
+          "新手先看 0.4 到 0.5 这一带，",
+          "弹性和成本比较平衡。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "你可以先把它叫风险中性。",
+          "不是太虚，",
+          "也不是太像现货。",
+        ],
+      },
+      {
+        button: "看 Theta",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "这一问就是：",
+          "这个合约的方向弹性，",
+          "适不适合我这笔交易？",
+        ],
+      },
+    ],
+  },
+  {
+    kicker: "下单检查 5",
+    title: "Theta：时间损耗扛得住吗",
+    action: "完成",
+    visual: {
+      type: "scenario",
+      label: "时间成本",
+      chips: ["每天流逝", "权利金损耗", "能否接受"],
+      payoff: "最后看自己扛不扛得住",
+    },
+    messages: [
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "最后看 Theta。",
+          "买期权不是买完就不花钱了，",
+          "时间每天都在扣钱。",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权新手",
+        mood: "curious",
+        lines: [
+          "也就是说，",
+          "如果行情暂时不动，",
+          "我也可能每天亏一点？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "对。",
+          "所以下单前要问自己：",
+          "我能接受每天损失这笔钱吗？",
+        ],
+      },
+      {
+        button: "下一段",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "如果不能接受，",
+          "要么换合约，",
+          "要么缩小仓位。",
+        ],
+      },
+      {
+        button: "完成",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "下单前最后一问：",
+          "时间站在我这边，",
+          "还是正在一点点吃掉我？",
         ],
       },
     ],

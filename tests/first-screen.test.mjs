@@ -44,6 +44,11 @@ test("tutorial screens are rendered from vanilla JS inside a mobile shell", asyn
   assert.match(js, /横盘收租，资产增效/);
   assert.match(js, /波动率坍塌，不靠方向/);
   assert.match(js, /现货平替，提高效率/);
+  assert.match(js, /先说清楚交易想法/);
+  assert.match(js, /IV Rank：买贵了吗/);
+  assert.match(js, /Spread：好不好进出/);
+  assert.match(js, /Delta：弹性合适吗/);
+  assert.match(js, /Theta：时间损耗扛得住吗/);
   assert.match(js, /messages/);
   assert.match(js, /currentMessageIndex/);
   assert.match(js, /visibleMessages/);
@@ -104,6 +109,16 @@ test("tutorial screens are rendered from vanilla JS inside a mobile shell", asyn
   assert.match(js, /双卖或者铁鹰/);
   assert.match(js, /买现货太占钱/);
   assert.match(js, /深实值 Call/);
+  assert.match(js, /先确定标的/);
+  assert.match(js, /再确定你判断它怎么走/);
+  assert.match(js, /IV Rank 低于 30%/);
+  assert.match(js, /买方会舒服一点/);
+  assert.match(js, /买一价和卖一价/);
+  assert.match(js, /价差太大/);
+  assert.match(js, /0\.4 到 0\.5/);
+  assert.match(js, /风险中性/);
+  assert.match(js, /每天损失这笔钱/);
+  assert.match(js, /下单前最后一问/);
   assert.match(js, /renderScenarioVisual/);
   assert.match(js, /scenario-visual/);
   assert.match(js, /addEventListener\("click"/);
