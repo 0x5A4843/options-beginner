@@ -8,98 +8,69 @@ const scrollDurationMs = 900;
 const screens = [
   {
     kicker: "为什么还要学期权？",
-    title: "期货能做方向，期权多了什么？",
+    title: "期货之外，期权多了什么？",
     action: "看一个例子",
-    utterances: [
+    messages: [
       {
         button: "下一段",
         role: "期权新手",
         mood: "curious",
-        line: "期货已经能用杠杆放大收益了。",
-      },
-      {
-        button: "下一段",
-        role: "期权新手",
-        mood: "curious",
-        line: "我看涨就做多，看跌就做空。",
-      },
-      {
-        button: "下一段",
-        role: "期权新手",
-        mood: "curious",
-        line: "那我为什么还要学股指期权？",
+        lines: [
+          "期货已经能用杠杆放大收益了。",
+          "我看涨就做多，看跌就做空。",
+          "那我为什么还要学股指期权？",
+        ],
       },
       {
         button: "下一段",
         role: "期权老师",
         mood: "steady",
-        line: "期权不是来替代期货的。",
+        lines: [
+          "期权不是来替代期货的。",
+          "期货更像是在押方向：涨还是跌。",
+          "但期权多给你几种玩法。",
+        ],
       },
       {
         button: "下一段",
         role: "期权老师",
         mood: "steady",
-        line: "期货更像是在押方向：涨还是跌。",
-      },
-      {
-        button: "下一段",
-        role: "期权老师",
-        mood: "steady",
-        line: "但期权多给你几种玩法。",
-      },
-      {
-        button: "下一段",
-        role: "期权老师",
-        mood: "steady",
-        line: "有时候你不一定非要猜对方向，",
-      },
-      {
-        button: "下一段",
-        role: "期权老师",
-        mood: "steady",
-        line: "也可以交易波动会不会变大，",
-      },
-      {
-        button: "下一段",
-        role: "期权老师",
-        mood: "steady",
-        line: "或者价格会不会突破某个位置。",
+        lines: [
+          "有时候你不一定非要猜对方向，",
+          "也可以交易波动会不会变大，",
+          "或者价格会不会突破某个位置。",
+        ],
       },
       {
         button: "下一段",
         role: "期权新手",
         mood: "curious",
-        line: "所以期权不是另一个期货？",
+        lines: ["所以期权不是另一个期货？"],
       },
       {
         button: "下一段",
         role: "期权老师",
         mood: "steady",
-        line: "对。",
-      },
-      {
-        button: "下一段",
-        role: "期权老师",
-        mood: "steady",
-        line: "它更像是给你的交易工具箱里，多放了一套工具。",
-      },
-      {
-        button: "下一段",
-        role: "期权新手",
-        mood: "curious",
-        line: "我感觉还是有点抽象，",
+        lines: [
+          "对。",
+          "它更像是给你的交易工具箱里，",
+          "多放了一套工具。",
+        ],
       },
       {
         button: "看一个例子",
         role: "期权新手",
         mood: "curious",
-        line: "能举一些更直观的例子么？",
+        lines: [
+          "我感觉还是有点抽象，",
+          "能举一些更直观的例子么？",
+        ],
       },
     ],
   },
   {
     kicker: "经典例子 1",
-    title: "宽跨式：怕它不动，不怕它大动",
+    title: "宽跨式：赚大波动",
     action: "看下一个例子",
     visual: {
       type: "wide-strangle",
@@ -111,174 +82,104 @@ const screens = [
       lowerProfit: "3820 以下赚钱",
       lossRange: "中间晃，亏权利金",
     },
-    utterances: [
+    messages: [
       {
         button: "下一段",
         activeHighlight: "none",
         role: "期权新手",
         mood: "curious",
-        line: "那你说个更具体的例子。",
+        lines: ["那你说个更具体的例子。"],
       },
       {
         button: "下一段",
         activeHighlight: "none",
         role: "期权老师",
         mood: "steady",
-        line: "比如指数现在在 4000 附近。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "你不知道它要涨还是跌，",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "但你觉得它快要大动了。",
+        lines: [
+          "比如指数现在在 4000 附近。",
+          "你不知道它要涨还是跌，",
+          "但你觉得它快要大动了。",
+        ],
       },
       {
         button: "下一段",
         activeHighlight: "none",
         role: "期权新手",
         mood: "curious",
-        line: "这种时候做期货就麻烦。",
+        lines: [
+          "这种时候做期货就麻烦。",
+          "做多怕它往下，",
+          "做空又怕它往上。",
+        ],
+      },
+      {
+        button: "下一段",
+        activeHighlight: "none",
+        role: "期权老师",
+        mood: "steady",
+        lines: [
+          "期权里有一种思路：",
+          "买 4100 认购，",
+          "再买 3900 认沽。",
+        ],
       },
       {
         button: "下一段",
         activeHighlight: "none",
         role: "期权新手",
         mood: "curious",
-        line: "做多怕它往下，",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权新手",
-        mood: "curious",
-        line: "做空又怕它往上。",
+        lines: ["这就是宽跨式？"],
       },
       {
         button: "下一段",
         activeHighlight: "none",
         role: "期权老师",
         mood: "steady",
-        line: "期权里有一种思路：",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "买 4100 认购，",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "再买 3900 认沽。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权新手",
-        mood: "curious",
-        line: "这就是宽跨式？",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "对，宽跨式。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "它赌的不是先猜涨跌，",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
-        role: "期权老师",
-        mood: "steady",
-        line: "而是赌指数会不会走出一段大行情。",
+        lines: [
+          "对，宽跨式。",
+          "它赌的不是先猜涨跌，",
+          "而是赌指数会不会走出一段大行情。",
+        ],
       },
       {
         button: "下一段",
         activeHighlight: "profit",
         role: "期权老师",
         mood: "steady",
-        line: "假设总共花了 80 点权利金。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "profit",
-        role: "期权老师",
-        mood: "steady",
-        line: "涨超 4180，开始赚钱。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "profit",
-        role: "期权老师",
-        mood: "steady",
-        line: "跌破 3820，也开始赚钱。",
+        lines: [
+          "假设总共花了 80 点权利金。",
+          "涨超 4180，开始赚钱。",
+          "跌破 3820，也开始赚钱。",
+        ],
       },
       {
         button: "下一段",
         activeHighlight: "loss",
         role: "期权老师",
         mood: "steady",
-        line: "如果在这中间，",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "loss",
-        role: "期权老师",
-        mood: "steady",
-        line: "指数来回晃但没走远，",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "loss",
-        role: "期权老师",
-        mood: "steady",
-        line: "那就亏这笔权利金。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "all",
-        role: "期权新手",
-        mood: "curious",
-        line: "明白了。",
-      },
-      {
-        button: "下一段",
-        activeHighlight: "all",
-        role: "期权新手",
-        mood: "curious",
-        line: "它不是怕涨，也不是怕跌，",
+        lines: [
+          "如果在这中间，",
+          "指数来回晃但没走远，",
+          "那就亏这笔权利金。",
+        ],
       },
       {
         button: "看下一个例子",
         activeHighlight: "all",
         role: "期权新手",
         mood: "curious",
-        line: "它怕的是不怎么动。",
+        lines: [
+          "明白了。",
+          "它不是怕涨，也不是怕跌，",
+          "它怕的是不怎么动。",
+        ],
       },
     ],
   },
 ];
 
 let currentScreenIndex = 0;
-let currentUtteranceIndex = 0;
+let currentMessageIndex = 0;
 let lastDialogueScrollTop = 0;
 
 function getSpeakerKind(role) {
@@ -287,6 +188,7 @@ function getSpeakerKind(role) {
 
 function renderDialogueLine(item) {
   const speakerKind = getSpeakerKind(item.role);
+  const messageLines = item.lines.map((line) => `<p>${line}</p>`).join("");
 
   return `
     <article class="dialogue-card ${speakerKind} ${item.mood}">
@@ -297,7 +199,7 @@ function renderDialogueLine(item) {
       </div>
       <div class="bubble">
         <p class="speaker speaker-${speakerKind}">${item.role}</p>
-        <p>${item.line}</p>
+        ${messageLines}
       </div>
     </article>
   `;
@@ -353,14 +255,14 @@ function renderVisual(visual, activeHighlight) {
   return "";
 }
 
-function getVisibleUtterances(screen) {
-  const visibleUtterances = screen.utterances.slice(0, currentUtteranceIndex + 1);
-  return visibleUtterances;
+function getVisibleMessages(screen) {
+  const visibleMessages = screen.messages.slice(0, currentMessageIndex + 1);
+  return visibleMessages;
 }
 
 function getButtonText(screen) {
-  if (currentUtteranceIndex < screen.utterances.length - 1) {
-    return screen.utterances[currentUtteranceIndex].button || "下一段";
+  if (currentMessageIndex < screen.messages.length - 1) {
+    return screen.messages[currentMessageIndex].button || "下一段";
   }
 
   return screen.action;
@@ -407,9 +309,9 @@ function scrollDialogueToLatest() {
 
 function renderScreen(screen) {
   const app = document.querySelector("#app");
-  const visibleUtterances = getVisibleUtterances(screen);
-  const currentUtterance = screen.utterances[currentUtteranceIndex];
-  const activeHighlight = currentUtterance.activeHighlight || "none";
+  const visibleMessages = getVisibleMessages(screen);
+  const currentMessage = screen.messages[currentMessageIndex];
+  const activeHighlight = currentMessage.activeHighlight || "none";
 
   app.innerHTML = `
     <div class="screen-copy">
@@ -419,7 +321,7 @@ function renderScreen(screen) {
     ${renderVisual(screen.visual, activeHighlight)}
     <div class="dialogue-panel" aria-label="对话内容">
       <div class="dialogue-list">
-        ${visibleUtterances.map(renderDialogueLine).join("")}
+        ${visibleMessages.map(renderDialogueLine).join("")}
       </div>
     </div>
     <button class="primary-action" type="button">${getButtonText(screen)}</button>
@@ -433,14 +335,14 @@ function advanceTutorial() {
   const screen = screens[currentScreenIndex];
   lastDialogueScrollTop = getCurrentDialogueScrollTop();
 
-  if (currentUtteranceIndex < screen.utterances.length - 1) {
-    currentUtteranceIndex += 1;
+  if (currentMessageIndex < screen.messages.length - 1) {
+    currentMessageIndex += 1;
     renderScreen(screen);
     return;
   }
 
   currentScreenIndex = Math.min(currentScreenIndex + 1, screens.length - 1);
-  currentUtteranceIndex = 0;
+  currentMessageIndex = 0;
   lastDialogueScrollTop = 0;
   renderScreen(screens[currentScreenIndex]);
 }

@@ -27,19 +27,19 @@ body {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 22px 18px 20px;
+  padding: 14px 16px 16px;
   background: #f9fbff;
 }
 
 .topbar {
-  padding: 8px 2px 20px;
+  padding: 4px 2px 8px;
 }
 
 .lesson-kicker,
 .section-label,
 .speaker {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #4f6f52;
 }
@@ -51,8 +51,8 @@ p {
 }
 
 h1 {
-  margin-top: 6px;
-  font-size: 1.28rem;
+  margin-top: 3px;
+  font-size: 1.12rem;
   letter-spacing: 0;
 }
 
@@ -61,18 +61,21 @@ h1 {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  gap: 12px;
+  gap: 8px;
 }
 
 .screen-copy {
-  padding-top: 10px;
+  padding-top: 0;
 }
 
 .screen-copy h2 {
-  margin-top: 8px;
-  font-size: 1.95rem;
-  line-height: 1.16;
+  margin-top: 3px;
+  font-size: 1.18rem;
+  line-height: 1.22;
   letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dialogue-panel {
