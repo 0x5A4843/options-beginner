@@ -113,6 +113,12 @@ h1 {
   margin-top: 6px;
 }
 
+.price-chart-area {
+  fill: #f7fafc;
+  stroke: #d7dee8;
+  stroke-width: 2;
+}
+
 .profit-zone,
 .loss-zone {
   opacity: 0.2;
@@ -140,6 +146,12 @@ h1 {
 .chart-threshold {
   stroke: #172033;
   stroke-dasharray: 6 6;
+  stroke-width: 2;
+}
+
+.chart-strike {
+  stroke: #8b5cf6;
+  stroke-dasharray: 4 5;
   stroke-width: 2;
 }
 
@@ -189,6 +201,11 @@ h1 {
 
 .chart-label.middle {
   fill: #a84338;
+}
+
+.chart-label.strike {
+  fill: #5b3bb2;
+  font-size: 13px;
 }
 
 .chart-label.current {

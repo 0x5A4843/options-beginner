@@ -70,11 +70,11 @@ const screens = [
   },
   {
     kicker: "经典例子 1",
-    title: "宽跨式：赚大波动",
+    title: "不判断方向，押注大波动",
     action: "看下一个例子",
     visual: {
       type: "wide-strangle",
-      label: "宽跨式例子",
+      label: "指数价格图",
       current: "4000",
       callStrike: "4100 认购",
       putStrike: "3900 认沽",
@@ -86,19 +86,13 @@ const screens = [
       {
         button: "下一段",
         activeHighlight: "none",
-        role: "期权新手",
-        mood: "curious",
-        lines: ["那你说个更具体的例子。"],
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
+        chartStage: "price",
         role: "期权老师",
         mood: "steady",
         lines: [
-          "比如指数现在在 4000 附近。",
-          "你不知道它要涨还是跌，",
-          "但你觉得它快要大动了。",
+          "市场已经横盘很久了。",
+          "我认为市场会有大波动，",
+          "但是我不能确定方向。",
         ],
       },
       {
@@ -108,42 +102,38 @@ const screens = [
         mood: "curious",
         lines: [
           "这种时候做期货就麻烦。",
-          "做多怕它往下，",
-          "做空又怕它往上。",
+          "做多怕它往下砸，",
+          "做空又怕它往上冲。",
         ],
       },
       {
         button: "下一段",
         activeHighlight: "none",
+        chartStage: "price",
         role: "期权老师",
         mood: "steady",
         lines: [
-          "期权里有一种思路：",
-          "买 4100 认购，",
-          "再买 3900 认沽。",
+          "那就换个想法。",
+          "不先押涨跌，",
+          "而是押它会不会走远。",
         ],
       },
       {
         button: "下一段",
         activeHighlight: "none",
-        role: "期权新手",
-        mood: "curious",
-        lines: ["这就是宽跨式？"],
-      },
-      {
-        button: "下一段",
-        activeHighlight: "none",
+        chartStage: "strikes",
         role: "期权老师",
         mood: "steady",
         lines: [
-          "对，宽跨式。",
-          "它赌的不是先猜涨跌，",
-          "而是赌指数会不会走出一段大行情。",
+          "比如指数现在 4000。",
+          "上面买 4100 认购，",
+          "下面买 3900 认沽。",
         ],
       },
       {
         button: "下一段",
         activeHighlight: "profit",
+        chartStage: "breakEven",
         role: "期权老师",
         mood: "steady",
         lines: [
@@ -155,22 +145,24 @@ const screens = [
       {
         button: "下一段",
         activeHighlight: "loss",
+        chartStage: "breakEven",
         role: "期权老师",
         mood: "steady",
         lines: [
-          "如果在这中间，",
-          "指数来回晃但没走远，",
+          "如果一直在这中间晃，",
+          "没涨远，也没跌远，",
           "那就亏这笔权利金。",
         ],
       },
       {
         button: "看下一个例子",
         activeHighlight: "all",
-        role: "期权新手",
-        mood: "curious",
+        chartStage: "all",
+        role: "期权老师",
+        mood: "steady",
         lines: [
-          "明白了。",
-          "它不是怕涨，也不是怕跌，",
+          "这类组合，名字就叫宽跨式。",
+          "它不是怕涨，也不是怕跌。",
           "它怕的是不怎么动。",
         ],
       },
@@ -209,7 +201,9 @@ function isHighlightActive(activeHighlight, zone) {
   return activeHighlight === zone || activeHighlight === "all";
 }
 
-function renderWideStrangleChart(visual, activeHighlight = "none") {
+function renderWideStrangleChart(visual, activeHighlight = "none", chartStage = "price") {
+  const showStrikes = ["strikes", "breakEven", "all"].includes(chartStage);
+  const showBreakEven = ["breakEven", "all"].includes(chartStage);
   const profitUpClass = isHighlightActive(activeHighlight, "profit") ? "is-active" : "";
   const profitDownClass = isHighlightActive(activeHighlight, "profit") ? "is-active" : "";
   const lossClass = isHighlightActive(activeHighlight, "loss") ? "is-active" : "";
@@ -217,39 +211,44 @@ function renderWideStrangleChart(visual, activeHighlight = "none") {
   return `
     <section class="chart-card" aria-label="${visual.label}">
       <div class="chart-title">${visual.label}</div>
-      <svg class="wide-strangle-chart" viewBox="0 0 320 190" role="img" aria-label="${visual.label}">
-        <rect class="profit-zone up ${profitUpClass}" x="28" y="18" width="264" height="42"></rect>
-        <rect class="loss-zone ${lossClass}" x="28" y="60" width="264" height="70"></rect>
-        <rect class="profit-zone down ${profitDownClass}" x="28" y="130" width="264" height="42"></rect>
+      <svg class="wide-strangle-chart price-chart" viewBox="0 0 320 190" role="img" aria-label="${visual.label}">
+        <rect class="price-chart-area" x="28" y="18" width="264" height="154"></rect>
+        ${showBreakEven ? `<rect class="profit-zone up ${profitUpClass}" x="28" y="18" width="264" height="42"></rect>` : ""}
+        ${showBreakEven ? `<rect class="loss-zone ${lossClass}" x="28" y="60" width="264" height="70"></rect>` : ""}
+        ${showBreakEven ? `<rect class="profit-zone down ${profitDownClass}" x="28" y="130" width="264" height="42"></rect>` : ""}
 
-        <line class="chart-threshold upper" x1="28" y1="60" x2="292" y2="60"></line>
-        <line class="chart-threshold lower" x1="28" y1="130" x2="292" y2="130"></line>
+        ${showBreakEven ? `<line class="chart-threshold upper" x1="28" y1="60" x2="292" y2="60"></line>` : ""}
+        ${showBreakEven ? `<line class="chart-threshold lower" x1="28" y1="130" x2="292" y2="130"></line>` : ""}
+        ${showStrikes ? `<line class="chart-strike upper" x1="28" y1="78" x2="292" y2="78"></line>` : ""}
+        ${showStrikes ? `<line class="chart-strike lower" x1="28" y1="112" x2="292" y2="112"></line>` : ""}
         <line class="chart-current" x1="160" y1="18" x2="160" y2="172"></line>
 
-        <path class="chart-price-path" d="M38 96 C72 91, 98 102, 130 96 S178 88, 202 96"></path>
-        <path class="chart-profit-path up" d="M202 96 C232 80, 252 48, 286 28"></path>
-        <path class="chart-profit-path down" d="M202 96 C232 112, 252 146, 286 166"></path>
+        <path class="chart-price-path" d="M38 98 C62 94, 84 101, 108 97 S150 93, 174 98 S216 104, 244 98 S276 92, 288 96"></path>
+        ${showBreakEven ? `<path class="chart-profit-path up" d="M206 96 C232 78, 252 48, 286 28"></path>` : ""}
+        ${showBreakEven ? `<path class="chart-profit-path down" d="M206 98 C232 116, 252 146, 286 166"></path>` : ""}
 
-        <text class="chart-label up" x="38" y="46">${visual.upperProfit}</text>
-        <text class="chart-label middle" x="58" y="100">${visual.lossRange}</text>
-        <text class="chart-label down" x="38" y="158">${visual.lowerProfit}</text>
+        ${showBreakEven ? `<text class="chart-label up" x="38" y="46">${visual.upperProfit}</text>` : ""}
+        ${showBreakEven ? `<text class="chart-label middle" x="58" y="100">${visual.lossRange}</text>` : ""}
+        ${showBreakEven ? `<text class="chart-label down" x="38" y="158">${visual.lowerProfit}</text>` : ""}
+        ${showStrikes ? `<text class="chart-label strike" x="38" y="75">${visual.callStrike}</text>` : ""}
+        ${showStrikes ? `<text class="chart-label strike" x="38" y="124">${visual.putStrike}</text>` : ""}
         <text class="chart-label current" x="132" y="184">现在 ${visual.current}</text>
       </svg>
       <div class="chart-legend">
-        <span>${visual.callStrike}</span>
-        <span>${visual.putStrike}</span>
+        <span>${showBreakEven ? visual.upperProfit : "横盘区间"}</span>
+        <span>${showBreakEven ? visual.lowerProfit : "等待突破"}</span>
       </div>
     </section>
   `;
 }
 
-function renderVisual(visual, activeHighlight) {
+function renderVisual(visual, activeHighlight, chartStage) {
   if (!visual) {
     return "";
   }
 
   if (visual.type === "wide-strangle") {
-    return renderWideStrangleChart(visual, activeHighlight);
+    return renderWideStrangleChart(visual, activeHighlight, chartStage);
   }
 
   return "";
@@ -312,13 +311,14 @@ function renderScreen(screen) {
   const visibleMessages = getVisibleMessages(screen);
   const currentMessage = screen.messages[currentMessageIndex];
   const activeHighlight = currentMessage.activeHighlight || "none";
+  const chartStage = currentMessage.chartStage || "price";
 
   app.innerHTML = `
     <div class="screen-copy">
       <p class="section-label">${screen.kicker}</p>
       <h2>${screen.title}</h2>
     </div>
-    ${renderVisual(screen.visual, activeHighlight)}
+    ${renderVisual(screen.visual, activeHighlight, chartStage)}
     <div class="dialogue-panel" aria-label="对话内容">
       <div class="dialogue-list">
         ${visibleMessages.map(renderDialogueLine).join("")}
